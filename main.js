@@ -510,6 +510,14 @@ requestAnimationFrame(() => {
     });
 });
 
+async function cargarLibrosFirebase() {
+  const { collection, getDocs } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+  const snapshot = await getDocs(collection(window.db, "libros"));
+  snapshot.forEach(doc => {
+    const libro = doc.data();
+    libros[libro.nombre] = libro;
+  });
+  mostrarImagenesLibros(libros);
 
 var fr=document.getElementById('frase');
 var a =document.createElement('button');
@@ -517,5 +525,10 @@ a.innerHTML='Frases';
 fr.appendChild(a);
 a.setAttribute('onclick','irafrases(libros)')
 // Llamar a la función para mostrar las imágenes al cargar la página
-mostrarImagenesLibros(libros);
+//mostrarImagenesLibros(libros);
+cargarLibrosFirebase();
+
 ordenarLibros();
+
+
+}

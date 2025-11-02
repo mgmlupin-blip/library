@@ -47,6 +47,9 @@
             <div id="compra">
                 <button onclick="iracompra()">Compra</button>
             </div>
+            <div id="buscarOnline">
+                <button onclick="buscarLibroOnline(prompt('Título del libro:'))">Añadir libro</button>
+            </div>
 
             <div id="buscador">
                 <span class="material-symbols-outlined">search</span> 
@@ -54,30 +57,7 @@
             </div>         
         </div>
         <div id="filas"></div>
-        <!--
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>       
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>
-        <hr class="linea"></hr>-->
+        
 
         <div class="contenedor-imagenes" id="contenedor-imagenes"></div>
     </div>
@@ -129,6 +109,24 @@
     </div>
     <script src="imagenes.js"></script>
     <script src="datos.js"></script>
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyCrukNVxmtzgb4aW65kDcPDuJlfoFNWN_A",
+    authDomain: "biblioteca-52ea6.firebaseapp.com",
+    projectId: "biblioteca-52ea6",
+    storageBucket: "biblioteca-52ea6.firebasestorage.app",
+    messagingSenderId: "943154653283",
+    appId: "1:943154653283:web:13f00063b9c19a1d8f7056"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    window.db = getFirestore(app);
+    </script>
+
+    <script src="buscador_online.js" type="module"></script>
     <script src="main.js"></script>
 </body>
 </html>
